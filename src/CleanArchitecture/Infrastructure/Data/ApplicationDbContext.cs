@@ -1,4 +1,5 @@
 using System.Reflection;
+using CleanArchitecture.Application.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Infrastructure.Data;
@@ -12,5 +13,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        
+        optionsBuilder.UseNpgsql();
     }
 }

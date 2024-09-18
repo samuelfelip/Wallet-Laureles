@@ -3,6 +3,8 @@ using CleanArchitecture.Application.Common;
 using CleanArchitecture.Infrastructure;
 using CleanArchitecture.Infrastructure.Data;
 using CleanArchitecture.Web.Middlewares;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Web.Extensions;
 
@@ -57,10 +59,7 @@ public static class HostingExtensions
         app.UseAuthorization();
 
         app.MapControllers();
-
         return app;
     }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
-    => optionsBuilder.UseSqlServer("Data Source=(LocalDb)\\MSSQLLocalDB;Database=AllTogetherNow");
+    
 }

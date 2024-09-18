@@ -13,7 +13,7 @@ public class ApplicationDbContextInitializer(ApplicationDbContext context, ILogg
         try
         {
             await _context.Database.MigrateAsync();
-            await SeedUser();
+            //await SeedUser();
         }
         catch (Exception exception)
         {
@@ -22,26 +22,26 @@ public class ApplicationDbContextInitializer(ApplicationDbContext context, ILogg
         }
     }
 
-    public async Task SeedUser()
-    {
-        await _context.Users.AddRangeAsync(
-        new List<User>{
-                new User
-                {
-                    UserName = "admin",
-                    Email = "admin@gmail.com",
-                    Password = "P@ssw0rd".Hash(),
-                    Role = Role.Admin
-                },
-                new User
-                {
-                    UserName = "user",
-                    Email = "user@gmail.com",
-                    Password = "P@ssw0rd".Hash(),
-                    Role = Role.User
-                },
-            }
-        );
-        await _context.SaveChangesAsync();
-    }
+    //public async Task SeedUser()
+    //{
+    //    await _context.Users.AddRangeAsync(
+    //    new List<User>{
+    //            new User
+    //            {
+    //                UserName = "admin",
+    //                Email = "admin@gmail.com",
+    //                Password = "P@ssw0rd".Hash(),
+    //                Role = Role.Admin
+    //            },
+    //            new User
+    //            {
+    //                UserName = "user",
+    //                Email = "user@gmail.com",
+    //                Password = "P@ssw0rd".Hash(),
+    //                Role = Role.User
+    //            },
+    //        }
+    //    );
+    //    await _context.SaveChangesAsync();
+    //}
 }
